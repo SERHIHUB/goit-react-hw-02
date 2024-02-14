@@ -7,7 +7,7 @@ import Notification from "./components/Notification/Notification";
 
 function App() {
   const [clicks, setClicks] = useState(() => {
-    const savedObject = localStorage.getItem("key");
+    const savedObject = window.localStorage.getItem("key");
     return savedObject !== null ? JSON.parse(savedObject) : startFeedback;
   });
 
@@ -27,7 +27,7 @@ function App() {
   };
 
   useEffect(() => {
-    localStorage.setItem(
+    window.localStorage.setItem(
       "key",
       JSON.stringify({
         good: good,
