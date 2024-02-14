@@ -8,7 +8,13 @@ import Notification from "./components/Notification/Notification";
 function App() {
   const [clicks, setClicks] = useState(() => {
     const savedObject = window.localStorage.getItem("key");
-    return savedObject !== null ? JSON.parse(savedObject) : startFeedback;
+    return savedObject !== null
+      ? JSON.parse(savedObject)
+      : {
+          good: 0,
+          neutral: 0,
+          bad: 0,
+        };
   });
 
   const updateFeedback = (feedbackType) => {
@@ -37,11 +43,11 @@ function App() {
     );
   }, [clicks]);
 
-  const startFeedback = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
-  };
+  // const startFeedback = {
+  //   good: 0,
+  //   neutral: 0,
+  //   bad: 0,
+  // };
   const good = clicks.good;
   const neutral = clicks.neutral;
   const bad = clicks.bad;
